@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Proyecto>
 
 
-@if (Model.Proyectos is not null)
+@if (Model is not null)
 {
     <div class="text-center pt-4">
         <h1>Mis trabajos Recientes</h1>
@@ -10,7 +10,7 @@
 
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            @foreach (var proyecto in Model.Proyectos)
+            @foreach (var proyecto in Model)
             {
                 <div class="col">
                     <div class="card h-100">
