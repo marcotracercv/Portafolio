@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portafolio.Models;
+using Portafolio.Servicios;
 using System.Diagnostics;
 
 namespace Portafolio.Controllers
@@ -7,16 +8,23 @@ namespace Portafolio.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly RepositorioProyectos repositorioProyectos;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, RepositorioProyectos repositorioProyectos)
         {
             _logger = logger;
+            this.repositorioProyectos = repositorioProyectos;
+            //_repositorioProyectos = repositorioProyectos;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var proyectos = repositorioProyectos.obtenerProyectos().Take(3).ToList();
+            var modelo = new HomeIndexViewModel() { Proyectos = proyectos };
+            return View(modelo);
         }
+
+       
 
         public IActionResult Privacy()
         {
