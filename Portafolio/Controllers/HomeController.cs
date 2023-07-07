@@ -8,12 +8,12 @@ namespace Portafolio.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly RepositorioProyectos repositorioProyectos;
+        private readonly IRepositorioProyectos repositorioProyectos;
 
-        public HomeController(ILogger<HomeController> logger, RepositorioProyectos repositorioProyectos)
+        public HomeController(ILogger<HomeController> logger, IRepositorioProyectos repositorioProyectos)
         {
             _logger = logger;
-            this.repositorioProyectos = repositorioProyectos;
+            this.repositorioProyectos = repositorioProyectos; //instancia de forma global para ser usado en todo el controlador de forma libre
             //_repositorioProyectos = repositorioProyectos;
         }
 
